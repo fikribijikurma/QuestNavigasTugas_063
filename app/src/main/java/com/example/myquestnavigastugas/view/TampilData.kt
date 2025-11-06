@@ -59,3 +59,12 @@ fun TampilData(navController: NavHostController) {
                         Text(text = peserta, fontSize = 16.sp)
                     }
                 }
+                Spacer(modifier = Modifier.height(20.dp))
+
+                Button(
+                    onClick = { navController.navigate("welcome") },
+                    modifier = Modifier.fillMaxWidth().padding(horizontal = 32.dp)
+                ) {
+                    Text("Beranda")
+                }
+                Spacer(modifier = Modifier.height(12.dp))
