@@ -18,3 +18,11 @@ fun Navigasiku(navController: NavHostController = rememberNavController()) {
         navController = navController,
         startDestination = PengelolaHalaman.Welcome.name
     ){
+        composable(route = PengelolaHalaman.Welcome.name) {
+        }
+        composable(route = PengelolaHalaman.ListPeserta.name) {
+        }
+        composable(route = PengelolaHalaman.Formulir.name) {
+        }
+    }
+}
