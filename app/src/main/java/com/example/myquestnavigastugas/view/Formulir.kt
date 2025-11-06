@@ -49,3 +49,34 @@ fun FormulirPendaftaran(modifier: Modifier){
     val paddingMedium = dimensionResource(id = R.dimen.padding_medium)
     val paddingLarge = dimensionResource(id = R.dimen.padding_large)
     val buttonHeight = dimensionResource(id = R.dimen.button_height)
+
+    // === Background utama ===
+    Surface(
+        color = Color(0xFFF6ECFF),
+        modifier = Modifier.fillMaxSize()
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(top = 53.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .statusBarsPadding()
+                    .background(Color(0xFFB56BFF)) // warna ungu full tepi layar
+                    .padding(vertical = paddingLarge)
+            ) {
+                Text(
+                    text = stringResource(R.string.FormulirPendaftaran),
+                    fontSize = dimensionResource(id = R.dimen.font_title).value.sp,
+                    color = Color.White,
+                    fontWeight = FontWeight.Bold,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier
+                        .fillMaxWidth()
+
+
+                )
+            }
