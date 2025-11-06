@@ -96,3 +96,30 @@ fun FormulirPendaftaran(modifier: Modifier){
                         .padding(paddingMedium)
                         .fillMaxWidth()
                 ) {
+                    // ===== NAMA LENGKAP =====
+                    Text("NAMA LENGKAP", fontWeight = FontWeight.Bold)
+                    OutlinedTextField(
+                        value = nama,
+                        onValueChange = { nama = it },
+                        placeholder = { Text("Isian nama lengkap") },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = paddingSmall)
+                    )
+                    Spacer(modifier = Modifier.height(paddingMedium))
+
+                    // ===== JENIS KELAMIN =====
+                    Text("JENIS KELAMIN", fontWeight = FontWeight.Bold)
+                    Spacer(modifier = Modifier.height(paddingSmall))
+                    Column(verticalArrangement = Arrangement.spacedBy(paddingSmall)) {
+                        listOf("Laki-laki", "Perempuan").forEach { opsi ->
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                RadioButton(
+                                    selected = jenisKelamin == opsi,
+                                    onClick = { jenisKelamin = opsi }
+                                )
+                                Text(opsi)
+                            }
+                        }
+                    }
+                    Spacer(modifier = Modifier.height(paddingMedium))
