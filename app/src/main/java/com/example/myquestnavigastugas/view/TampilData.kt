@@ -24,6 +24,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.example.myquestnavigastugas.R
 
 @Composable
 fun TampilData(navController: NavHostController) {
@@ -68,3 +69,15 @@ fun TampilData(navController: NavHostController) {
                     Text("Beranda")
                 }
                 Spacer(modifier = Modifier.height(12.dp))
+
+                Button(
+                    onClick = { navController.navigate("formulir") },
+                    colors = ButtonDefaults.buttonColors(containerColor = Color.White),
+                    modifier = Modifier.fillMaxWidth().padding(horizontal = 32.dp)
+                ) {
+                    Text("Formulir Pendaftaran", color = Color(0xFF6200EE))
+                }
+            }
+        }
+    }
+}
