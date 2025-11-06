@@ -41,3 +41,9 @@ fun WelcomeScreen(navController: NavHostController) {
             )
 
             Spacer(modifier = Modifier.height(16.dp))
+
+            Text("Auliya Fikri Rahmadani", fontSize = 25.sp)
+            Text("20230140063", fontSize = 23.sp,
+                color = MaterialTheme.colorScheme.secondary)
+
+            Spacer(modifier = Modifier.height(32.dp))
