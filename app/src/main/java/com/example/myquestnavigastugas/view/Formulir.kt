@@ -36,6 +36,7 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.myquestnavigastugas.R
 
 @Composable
 fun FormulirPendaftaran(modifier: Modifier){
@@ -150,4 +151,20 @@ fun FormulirPendaftaran(modifier: Modifier){
                     )
 
                     Spacer(modifier = Modifier.height(paddingLarge))
+                    // ===== BUTTON SUBMIT =====
+                    Button(
+                        onClick = { /* aksi submit */ },
+                        colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF8A2BE2)),
+                        shape = RoundedCornerShape(50),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(buttonHeight)
+                    ) {
+                        Text(stringResource(R.string.Submit), color = Color.White, fontWeight = FontWeight.Bold)
+                    }
+                }
+            }
+        }
+    }
+}
 
