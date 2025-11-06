@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Ukuran Padding -->
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_medium">16dp</dimen>
+    <dimen name="padding_large">24dp</dimen>
+
+    <!-- Ukuran Komponen -->
+    <dimen name="button_height">56dp</dimen>
+
+    <!-- Ukuran Font -->
+    <dimen name="font_title">22sp</dimen>
+</resources>

@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
@@ -19,14 +20,20 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHostController
+// Import NavHostController tidak diperlukan
 import com.example.myquestnavigastugas.R
 
 @Composable
-fun WelcomeScreen(navController: NavHostController) {
+// PERBAIKAN: Sesuaikan nama parameter agar cocok dengan panggilan di Navigasi.kt
+fun WelcomeScreen(
+    onTampilDataClicked: () -> Unit,
+    onFormulirPendaftaranClicked: () -> Unit
+) {
     Surface(modifier = Modifier.fillMaxSize()) {
         Column(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(16.dp),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -43,15 +50,33 @@ fun WelcomeScreen(navController: NavHostController) {
             Spacer(modifier = Modifier.height(16.dp))
 
             Text("Auliya Fikri Rahmadani", fontSize = 25.sp)
-            Text("20230140063", fontSize = 23.sp,
-                color = MaterialTheme.colorScheme.secondary)
+            Text(
+                "20230140063", fontSize = 23.sp,
+                color = MaterialTheme.colorScheme.secondary
+            )
 
             Spacer(modifier = Modifier.height(32.dp))
+
+            // PERBAIKAN: Hubungkan tombol ke aksi navigasi yang benar
             Button(
-                onClick = { navController.navigate("listPeserta") },
-                modifier = Modifier.fillMaxWidth(0.7f).height(50.dp)
+                onClick = onFormulirPendaftaranClicked, // Navigasi ke halaman formulir
+                modifier = Modifier
+                    .fillMaxWidth(0.8f)
+                    .height(50.dp)
             ) {
-                Text("Submit")
+                Text("Buka Formulir Pendaftaran")
+            }
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            // PERBAIKAN: Hubungkan tombol ke aksi navigasi yang benar
+            Button(
+                onClick = onTampilDataClicked, // Navigasi ke halaman daftar peserta
+                modifier = Modifier
+                    .fillMaxWidth(0.8f)
+                    .height(50.dp)
+            ) {
+                Text("Lihat Daftar Peserta")
             }
         }
     }

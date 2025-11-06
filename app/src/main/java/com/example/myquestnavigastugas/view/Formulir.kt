@@ -11,12 +11,17 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
-import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Surface
@@ -39,7 +44,12 @@ import androidx.compose.ui.unit.sp
 import com.example.myquestnavigastugas.R
 
 @Composable
-fun FormulirPendaftaran(modifier: Modifier){
+// PERBAIKAN 1: Sesuaikan parameter fungsi agar cocok dengan panggilan di Navigasi.kt
+fun FormulirPendaftaran(
+    onSubmitClicked: () -> Unit,
+    onBackPressed: () -> Unit,
+    modifier: Modifier = Modifier // Tambahkan nilai default
+) {
     // === State ===
     var nama by remember { mutableStateOf(TextFieldValue("")) }
     var alamat by remember { mutableStateOf(TextFieldValue("")) }
@@ -54,40 +64,48 @@ fun FormulirPendaftaran(modifier: Modifier){
     // === Background utama ===
     Surface(
         color = Color(0xFFF6ECFF),
-        modifier = Modifier.fillMaxSize()
+        modifier = modifier.fillMaxSize() // Gunakan modifier dari parameter
     ) {
         Column(
+            // PERBAIKAN 2: Tambahkan verticalScroll agar konten tidak terpotong
             modifier = Modifier
                 .fillMaxSize()
-                .padding(top = 53.dp),
+                .verticalScroll(rememberScrollState()),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
                     .statusBarsPadding()
-                    .background(Color(0xFFB56BFF)) // warna ungu full tepi layar
+                    .background(Color(0xFFB56BFF))
                     .padding(vertical = paddingLarge)
             ) {
+                // PERBAIKAN 3: Tambahkan tombol kembali (IconButton)
+                IconButton(
+                    onClick = onBackPressed,
+                    modifier = Modifier.align(Alignment.CenterStart)
+                ) {
+                    Icon(
+                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                        contentDescription = stringResource(R.string.kembali),
+                        tint = Color.White
+                    )
+                }
                 Text(
                     text = stringResource(R.string.FormulirPendaftaran),
                     fontSize = dimensionResource(id = R.dimen.font_title).value.sp,
                     color = Color.White,
                     fontWeight = FontWeight.Bold,
                     textAlign = TextAlign.Center,
-                    modifier = Modifier
-                        .fillMaxWidth()
-
-
+                    modifier = Modifier.fillMaxWidth()
                 )
             }
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(paddingMedium))
             // ===== CARD FORM =====
             Card(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = paddingMedium)
-                    .wrapContentHeight(),
+                    .padding(horizontal = paddingMedium),
                 shape = RoundedCornerShape(16.dp),
                 colors = CardDefaults.cardColors(containerColor = Color.White),
                 elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
@@ -124,6 +142,7 @@ fun FormulirPendaftaran(modifier: Modifier){
                         }
                     }
                     Spacer(modifier = Modifier.height(paddingMedium))
+
                     // ===== STATUS PERKAWINAN =====
                     Text("STATUS PERKAWINAN", fontWeight = FontWeight.Bold)
                     Spacer(modifier = Modifier.height(paddingSmall))
@@ -139,6 +158,7 @@ fun FormulirPendaftaran(modifier: Modifier){
                         }
                     }
                     Spacer(modifier = Modifier.height(paddingMedium))
+
                     // ===== ALAMAT =====
                     Text("ALAMAT", fontWeight = FontWeight.Bold)
                     OutlinedTextField(
@@ -153,7 +173,8 @@ fun FormulirPendaftaran(modifier: Modifier){
                     Spacer(modifier = Modifier.height(paddingLarge))
                     // ===== BUTTON SUBMIT =====
                     Button(
-                        onClick = { /* aksi submit */ },
+                        // PERBAIKAN 4: Hubungkan tombol dengan aksi navigasi
+                        onClick = onSubmitClicked,
                         colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF8A2BE2)),
                         shape = RoundedCornerShape(50),
                         modifier = Modifier
@@ -164,7 +185,8 @@ fun FormulirPendaftaran(modifier: Modifier){
                     }
                 }
             }
+            // Memberi jarak di bawah agar nyaman di-scroll
+            Spacer(modifier = Modifier.height(paddingLarge))
         }
     }
 }
-

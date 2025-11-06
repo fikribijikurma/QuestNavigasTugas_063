@@ -1,12 +1,15 @@
 package com.example.myquestnavigastugas.view
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -48,35 +51,47 @@ fun TampilData(navController: NavHostController) {
             )
             Spacer(modifier = Modifier.height(20.dp))
 
-            pesertaList.forEach { peserta ->
-                Card(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(vertical = 6.dp),
-                    shape = RoundedCornerShape(16.dp),
-                    elevation = CardDefaults.cardElevation(8.dp)
-                ) {
-                    Column(modifier = Modifier.padding(16.dp)) {
-                        Text(text = peserta, fontSize = 16.sp)
+            // PERBAIKAN 1: Gunakan LazyColumn untuk daftar yang bisa di-scroll
+            LazyColumn(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(1f), // Agar LazyColumn mengisi ruang yang tersedia
+                verticalArrangement = Arrangement.spacedBy(12.dp)
+            ) {
+                items(pesertaList) { peserta ->
+                    Card(
+                        modifier = Modifier
+                            .fillMaxWidth(),
+                        shape = RoundedCornerShape(16.dp),
+                        elevation = CardDefaults.cardElevation(8.dp)
+                    ) {
+                        Column(modifier = Modifier.padding(16.dp)) {
+                            Text(text = peserta, fontSize = 16.sp)
+                        }
                     }
                 }
-                Spacer(modifier = Modifier.height(20.dp))
+            }
 
-                Button(
-                    onClick = { navController.navigate("welcome") },
-                    modifier = Modifier.fillMaxWidth().padding(horizontal = 32.dp)
-                ) {
-                    Text("Beranda")
-                }
-                Spacer(modifier = Modifier.height(12.dp))
+            Spacer(modifier = Modifier.height(20.dp))
 
-                Button(
-                    onClick = { navController.navigate("formulir") },
-                    colors = ButtonDefaults.buttonColors(containerColor = Color.White),
-                    modifier = Modifier.fillMaxWidth().padding(horizontal = 32.dp)
-                ) {
-                    Text("Formulir Pendaftaran", color = Color(0xFF6200EE))
-                }
+            Button(
+                onClick = { navController.navigate("welcome") },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 32.dp)
+            ) {
+                Text("Beranda")
+            }
+            Spacer(modifier = Modifier.height(12.dp))
+
+            Button(
+                onClick = { navController.navigate("formulir") },
+                colors = ButtonDefaults.buttonColors(containerColor = Color.White),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 32.dp)
+            ) {
+                Text("Formulir Pendaftaran", color = Color(0xFF6200EE))
             }
         }
     }
