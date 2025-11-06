@@ -11,3 +11,10 @@ num class PengelolaHalaman {
     ListPeserta,
     Formulir
 }
+@Composable
+fun Navigasiku(navController: NavHostController = rememberNavController()) {
+
+    NavHost(
+        navController = navController,
+        startDestination = PengelolaHalaman.Welcome.name
+    ){
