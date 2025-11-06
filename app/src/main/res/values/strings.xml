@@ -1,3 +1,18 @@
 <resources>
-    <string name="app_name">MyQuestNavigasTugas</string>
+    <string name="app_name">QuestNavigasTugas</string>
+    <string name="submit">Submit</string>
+    <string name="back">Back</string>
+    <string name="nama_lengkap">NAMA LENGKAP</string>
+    <string name="jenis_kelamin">JENIS KELAMIN</string>
+    <string name="status_perkawinan">STATUS PERKAWINAN</string>
+    <string name="alamat">ALAMAT</string>
+    <string name="tampil">Tampilan Data</string>
+    <string name="home">Form Isian</string>
+
+    <string-array name="data_peserta">
+        <item>Nama Lengkap: Auliya Fikri Rahmadani</item>
+        <item>Jenis Kelamin: Laki-Laki</item>
+        <item>Status Perkawinan: Lajang</item>
+        <item>Alamat: Jaga Garong</item>
+    </string-array>
 </resources>
