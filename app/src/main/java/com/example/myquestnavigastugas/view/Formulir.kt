@@ -81,3 +81,18 @@ fun FormulirPendaftaran(modifier: Modifier){
                 )
             }
             Spacer(modifier = Modifier.height(20.dp))
+            // ===== CARD FORM =====
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = paddingMedium)
+                    .wrapContentHeight(),
+                shape = RoundedCornerShape(16.dp),
+                colors = CardDefaults.cardColors(containerColor = Color.White),
+                elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
+            ) {
+                Column(
+                    modifier = Modifier
+                        .padding(paddingMedium)
+                        .fillMaxWidth()
+                ) {
