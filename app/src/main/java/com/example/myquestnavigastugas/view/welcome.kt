@@ -47,3 +47,12 @@ fun WelcomeScreen(navController: NavHostController) {
                 color = MaterialTheme.colorScheme.secondary)
 
             Spacer(modifier = Modifier.height(32.dp))
+            Button(
+                onClick = { navController.navigate("listPeserta") },
+                modifier = Modifier.fillMaxWidth(0.7f).height(50.dp)
+            ) {
+                Text("Submit")
+            }
+        }
+    }
+}
