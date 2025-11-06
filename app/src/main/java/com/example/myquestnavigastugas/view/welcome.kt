@@ -20,6 +20,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.example.myquestnavigastugas.R
 
 @Composable
 fun WelcomeScreen(navController: NavHostController) {
@@ -32,3 +33,11 @@ fun WelcomeScreen(navController: NavHostController) {
             Text("Selamat Datang", fontSize = 30.sp, fontWeight = FontWeight.Bold)
 
             Spacer(modifier = Modifier.height(24.dp))
+
+            Image(
+                painter = painterResource(id = R.drawable.image),
+                contentDescription = "image",
+                modifier = Modifier.size(200.dp)
+            )
+
+            Spacer(modifier = Modifier.height(16.dp))
