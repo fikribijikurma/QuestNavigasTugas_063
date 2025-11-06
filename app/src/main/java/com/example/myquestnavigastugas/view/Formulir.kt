@@ -80,3 +80,4 @@ fun FormulirPendaftaran(modifier: Modifier){
 
                 )
             }
+            Spacer(modifier = Modifier.height(20.dp))
